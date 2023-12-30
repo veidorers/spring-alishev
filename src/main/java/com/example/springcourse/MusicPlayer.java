@@ -12,7 +12,11 @@ public class MusicPlayer {
 
 
     public void setVolume(int volume) {
+    }
+
         this.volume = volume;
+    public int getVolume() {
+        return volume;
     }
 
     public void setName(String name) {
