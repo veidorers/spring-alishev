@@ -8,6 +8,9 @@ public class ApplicationRunner {
         Music music = context.getBean("musicBean", Music.class);
         MusicPlayer musicPlayer = new MusicPlayer(music);
         musicPlayer.playMusic();
+
+        MusicPlayer musicPlayer2 = new MusicPlayer(context.getBean("rockMusic", Music.class));
+        musicPlayer2.playMusic();
     }
 }
 
