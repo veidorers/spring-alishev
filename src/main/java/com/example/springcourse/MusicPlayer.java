@@ -1,19 +1,15 @@
 package com.example.springcourse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicPlayer {
-    private Music music;
+    private List<Music> musicList = new ArrayList<>();
     private int volume;
     private String name;
 
     public MusicPlayer() {}
 
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
 
     public void setVolume(int volume) {
         this.volume = volume;
@@ -23,14 +19,20 @@ public class MusicPlayer {
         this.name = name;
     }
 
-    public void playMusic() {
-        System.out.println(music.getSong());
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void playMusicList() {
+        musicList.forEach(
+                music -> System.out.println(music.getSong())
+        );
     }
 
     @Override
     public String toString() {
         return "MusicPlayer{" +
-               "music=" + music +
+               "musicList=" + musicList +
                ", volume=" + volume +
                ", name='" + name + '\'' +
                '}';
