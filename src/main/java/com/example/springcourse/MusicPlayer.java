@@ -8,13 +8,26 @@ public class MusicPlayer {
     private int volume;
     private String name;
 
-    public MusicPlayer() {}
+    private MusicPlayer() {}
+
+    public static MusicPlayer getMusicPlayer() {
+        System.out.println("factory method");
+        return new MusicPlayer();
+    }
+
+    public void doMyInit() {
+        System.out.println("MusicPlayer initialization...");
+    }
+
+    public void doMyDestroy() {
+        System.out.println("MusicPlayer destruction...");
+    }
 
 
     public void setVolume(int volume) {
+        this.volume = volume;
     }
 
-        this.volume = volume;
     public int getVolume() {
         return volume;
     }
