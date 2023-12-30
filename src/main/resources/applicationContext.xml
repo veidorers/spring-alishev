@@ -7,8 +7,15 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
     <bean id="musicBean"
-          class="com.example.springcourse.RapMusic">
+          class="com.example.springcourse.ClassicalMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="com.example.springcourse.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
     </bean>
 
 </beans>
