@@ -9,7 +9,7 @@ public class ApplicationRunner {
         );
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playMusic(MusicGenre.ROCK);
+        musicPlayer.playMusic();
 
         context.close();
     }

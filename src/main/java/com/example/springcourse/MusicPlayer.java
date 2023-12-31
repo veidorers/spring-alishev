@@ -1,41 +1,20 @@
 package com.example.springcourse;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-@Component
+//@Component
 public class MusicPlayer {
-    @Value("${musicPlayer.name}")
-    private String name;
-    @Value("${musicPlayer.volume}")
-    private int volume;
+    List<Music> musicList;
 
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public void playMusic(MusicGenre genre) {
+    public void playMusic() {
         Random random = new Random();
-        var songIndex = random.nextInt(3);
-        if (genre.equals(MusicGenre.CLASSICAL)) {
-            System.out.println("Playing: " + classicalMusic.getSong().get(songIndex));
-        }
-        else {
-            System.out.println("Playing: " + rockMusic.getSong().get(songIndex));
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "MusicPlayer{" +
-               "name='" + name + '\'' +
-               ", volume=" + volume +
-               '}';
+        int randomGenreIndex = random.nextInt(musicList.size());
+        System.out.println("Playing: " + musicList.get(randomGenreIndex).getSong());
     }
 }

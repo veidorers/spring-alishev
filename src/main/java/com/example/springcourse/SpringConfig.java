@@ -5,9 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.List;
+
 @Configuration
 //@ComponentScan("com.example.springcourse")
-@PropertySource("classpath:musicPlayer.properties")
+//@PropertySource("classpath:musicPlayer.properties")
 public class SpringConfig {
     @Bean
     public ClassicalMusic classicalMusic() {
@@ -20,7 +22,17 @@ public class SpringConfig {
     }
 
     @Bean
+    public RapMusic rapMusic() {
+        return new RapMusic();
+    }
+
+    @Bean
+    public List<Music> musicList() {
+        return List.of(classicalMusic(), rockMusic(), rapMusic());
+    }
+
+    @Bean
     public MusicPlayer musicPlayer() {
-        return new MusicPlayer(classicalMusic(), rockMusic());
+        return new MusicPlayer(musicList());
     }
 }
