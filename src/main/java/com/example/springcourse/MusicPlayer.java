@@ -1,21 +1,19 @@
 package com.example.springcourse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
 public class MusicPlayer {
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
-
-//    @Autowired
-//    public MusicPlayer(@Qualifier("classicalMusic") Music music1,
-//                       @Qualifier("rockMusic") Music music2) {
-//        this.music1 = music1;
-//        this.music2 = music2;
-//    }
-
 
     public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
         this.classicalMusic = classicalMusic;
@@ -31,5 +29,13 @@ public class MusicPlayer {
         else {
             System.out.println("Playing: " + rockMusic.getSong().get(songIndex));
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MusicPlayer{" +
+               "name='" + name + '\'' +
+               ", volume=" + volume +
+               '}';
     }
 }

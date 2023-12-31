@@ -8,6 +8,13 @@ public class ApplicationRunner {
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
         musicPlayer.playMusic(MusicGenre.ROCK);
+        System.out.println(musicPlayer);
+
+        var classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
+        var classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
+        System.out.println(classicalMusic1 == classicalMusic2);
+
+        context.close();
     }
 }
 
